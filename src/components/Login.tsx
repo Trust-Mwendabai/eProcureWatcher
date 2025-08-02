@@ -82,16 +82,7 @@ const Login: React.FC = () => {
             Sign In
           </button>
         </form>
-
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <p className="text-sm text-gray-600 mb-2">Demo Accounts:</p>
-          <div className="text-xs space-y-1">
-            <div>Admin: admin@zra.gov.zm</div>
-            <div>Auditor: auditor@zra.gov.zm</div>
-            <div>Procurement: procurement@zppa.gov.zm</div>
-            <div className="font-medium">Password: password</div>
-          </div>
-        </div>
+        
       </div>
     </div>
   );
