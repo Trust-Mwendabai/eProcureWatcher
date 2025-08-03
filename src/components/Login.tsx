@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Shield, AlertCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -8,13 +8,13 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuth();
-  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    
     if (login(email, password)) {
-      navigate('/dashboard');
+      // Success - user will be redirected by App component
     } else {
       setError('Invalid credentials. Try: admin@zra.gov.zm / password');
     }
@@ -22,6 +22,13 @@ const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 flex flex-col items-center justify-center p-4">
+      <Link 
+        to="/"
+        className="absolute top-4 left-4 text-white hover:text-blue-200 transition duration-200 text-sm font-medium"
+      >
+        ← Back to Home
+      </Link>
+      
       <Link 
         to="/"
         className="absolute top-4 left-4 text-white hover:text-blue-200 transition duration-200 text-sm font-medium"
@@ -82,8 +89,7 @@ const Login: React.FC = () => {
             Sign In
           </button>
         </form>
-
-      
+       
       </div>
     </div>
   );

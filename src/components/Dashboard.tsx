@@ -63,21 +63,21 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="w-full max-w-7xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Compliance Dashboard</h1>
         <p className="text-gray-600">Overview of contractor tax compliance status</p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
         <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600 mb-1">Total Verified</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.totalVerified}</p>
+              <p className="text-2xl lg:text-3xl font-bold text-gray-900">{stats.totalVerified}</p>
             </div>
-            <Users className="h-12 w-12 text-blue-500" />
+            <Users className="h-8 w-8 lg:h-12 lg:w-12 text-blue-500" />
           </div>
         </div>
 
@@ -85,13 +85,13 @@ const Dashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600 mb-1">Compliant</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.compliant}</p>
+              <p className="text-2xl lg:text-3xl font-bold text-gray-900">{stats.compliant}</p>
               <p className="text-sm text-green-600 flex items-center mt-1">
                 <TrendingUp className="h-4 w-4 mr-1" />
                 {stats.complianceRate}%
               </p>
             </div>
-            <CheckCircle className="h-12 w-12 text-green-500" />
+            <CheckCircle className="h-8 w-8 lg:h-12 lg:w-12 text-green-500" />
           </div>
         </div>
 
@@ -99,13 +99,13 @@ const Dashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600 mb-1">Non-Compliant</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.nonCompliant}</p>
+              <p className="text-2xl lg:text-3xl font-bold text-gray-900">{stats.nonCompliant}</p>
               <p className="text-sm text-red-600 flex items-center mt-1">
                 <TrendingDown className="h-4 w-4 mr-1" />
                 {stats.nonComplianceRate}%
               </p>
             </div>
-            <AlertTriangle className="h-12 w-12 text-red-500" />
+            <AlertTriangle className="h-8 w-8 lg:h-12 lg:w-12 text-red-500" />
           </div>
         </div>
 
@@ -113,23 +113,27 @@ const Dashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600 mb-1">Pending Review</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.pending}</p>
+              <p className="text-2xl lg:text-3xl font-bold text-gray-900">{stats.pending}</p>
             </div>
-            <Clock className="h-12 w-12 text-yellow-500" />
+            <Clock className="h-8 w-8 lg:h-12 lg:w-12 text-yellow-500" />
           </div>
         </div>
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 mb-8">
         <div className="bg-white rounded-xl shadow-md p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Monthly Compliance Trends</h3>
-          <Bar data={monthlyData} options={chartOptions} />
+          <div className="h-64 lg:h-80">
+            <Bar data={monthlyData} options={{...chartOptions, maintainAspectRatio: false}} />
+          </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Compliance by Industry</h3>
-          <Pie data={industryData} options={chartOptions} />
+          <div className="h-64 lg:h-80">
+            <Pie data={industryData} options={{...chartOptions, maintainAspectRatio: false}} />
+          </div>
         </div>
       </div>
 
